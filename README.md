@@ -21,7 +21,7 @@ git push -u origin main
 
 | Secret                 | Description                                                                                                |
 |------------------------|------------------------------------------------------------------------------------------------------------|
-| `PUBLISH_TOKEN`        | JetBrains Marketplace token — [generate here](https://plugins.jetbrains.com/author/me/tokens)              |
+| `JETBRAINS_PLUGINS_PUBLISH_TOKEN` | JetBrains Marketplace token, stored as an organization secret and inherited by this repository — [generate here](https://plugins.jetbrains.com/author/me/tokens) |
 | `CERTIFICATE_CHAIN`    | Plugin signing certificate chain ([docs](https://plugins.jetbrains.com/docs/intellij/plugin-signing.html)) |
 | `PRIVATE_KEY`          | Plugin signing private key                                                                                 |
 | `PRIVATE_KEY_PASSWORD` | Password for the private key                                                                               |
