@@ -1,0 +1,38 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>ro.pieceofcode.jetbrains.plugin.wsl-macros</id>
+
+    <!-- Public plugin name should be written in Title Case.
+     Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-name -->
+    <name>WSL Macros</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor url="https://pieceofcode.ro">Piece of Code</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-description -->
+    <description><![CDATA[
+        Provides <em>Wsl</em>-prefixed macros (<code>$WslFilePath$</code>, <code>$WslFileDir$</code>,
+        <code>$WslProjectFileDir$</code>, <code>$WslProjectpath$</code>, <code>$WslContentRoot$</code>)
+        that always expand to the Windows-visible path (<code>\\wsl.localhost\...</code>) even under WSL,
+        bypassing the platform's WSL path translation that corrupts built-in path macros
+        (<code>$FilePath$</code>, etc.) when a plain Windows tool consumes a file on a WSL mount.
+        ]]></description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+
+    <!-- Extensions defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+        <macro implementation="ro.pieceofcode.jetbrains.plugin.wslmacros.WslFilePathMacro"/>
+        <macro implementation="ro.pieceofcode.jetbrains.plugin.wslmacros.WslFileDirMacro"/>
+        <macro implementation="ro.pieceofcode.jetbrains.plugin.wslmacros.WslProjectFileDirMacro"/>
+        <macro implementation="ro.pieceofcode.jetbrains.plugin.wslmacros.WslProjectpathMacro"/>
+        <macro implementation="ro.pieceofcode.jetbrains.plugin.wslmacros.WslContentRootMacro"/>
+    </extensions>
+    
+</idea-plugin>
