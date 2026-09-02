@@ -17,14 +17,14 @@ git remote add origin https://github.com/<username>/<repository>.git
 git push -u origin main
 ```
 
-3. Configure publishing [secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) in the GitHub repository settings:
+3. Configure publishing [secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) in the GitHub organization settings — each is inherited by this repository:
 
 | Secret                 | Description                                                                                                |
 |------------------------|------------------------------------------------------------------------------------------------------------|
 | `JETBRAINS_PLUGINS_PUBLISH_TOKEN` | JetBrains Marketplace token, stored as an organization secret and inherited by this repository — [generate here](https://plugins.jetbrains.com/author/me/tokens) |
-| `CERTIFICATE_CHAIN`    | Plugin signing certificate chain ([docs](https://plugins.jetbrains.com/docs/intellij/plugin-signing.html)) |
-| `PRIVATE_KEY`          | Plugin signing private key                                                                                 |
-| `PRIVATE_KEY_PASSWORD` | Password for the private key                                                                               |
+| `JETBRAINS_PLUGINS_CERTIFICATE_CHAIN` | Plugin signing certificate chain, stored as an organization secret and inherited by this repository ([docs](https://plugins.jetbrains.com/docs/intellij/plugin-signing.html)) |
+| `JETBRAINS_PLUGINS_PRIVATE_KEY` | Plugin signing private key, stored as an organization secret and inherited by this repository |
+| `JETBRAINS_PLUGINS_PRIVATE_KEY_PASSWORD` | Password for the private key, stored as an organization secret and inherited by this repository |
 
 ## Overview
 

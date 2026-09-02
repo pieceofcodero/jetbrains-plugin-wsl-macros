@@ -1,6 +1,7 @@
 # GitHub Actions Workflow created for handling the release process based on the draft release prepared with the Build workflow.
-# Running the publishPlugin task requires the following secrets: JETBRAINS_PLUGINS_PUBLISH_TOKEN (organization-level,
-# inherited by this repository), PRIVATE_KEY, PRIVATE_KEY_PASSWORD, CERTIFICATE_CHAIN.
+# Running the publishPlugin task requires the following organization-level secrets (inherited by this repository):
+# JETBRAINS_PLUGINS_PUBLISH_TOKEN, JETBRAINS_PLUGINS_CERTIFICATE_CHAIN, JETBRAINS_PLUGINS_PRIVATE_KEY and
+# JETBRAINS_PLUGINS_PRIVATE_KEY_PASSWORD.
 # See https://plugins.jetbrains.com/docs/intellij/plugin-signing.html for more information.
 
 name: Release
@@ -61,9 +62,9 @@ jobs:
       - name: Publish Plugin
         env:
           PUBLISH_TOKEN: ${{ secrets.JETBRAINS_PLUGINS_PUBLISH_TOKEN }}
-          CERTIFICATE_CHAIN: ${{ secrets.CERTIFICATE_CHAIN }}
-          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-          PRIVATE_KEY_PASSWORD: ${{ secrets.PRIVATE_KEY_PASSWORD }}
+          CERTIFICATE_CHAIN: ${{ secrets.JETBRAINS_PLUGINS_CERTIFICATE_CHAIN }}
+          PRIVATE_KEY: ${{ secrets.JETBRAINS_PLUGINS_PRIVATE_KEY }}
+          PRIVATE_KEY_PASSWORD: ${{ secrets.JETBRAINS_PLUGINS_PRIVATE_KEY_PASSWORD }}
         run: ./gradlew publishPlugin
 
       # Upload an artifact as a release asset
