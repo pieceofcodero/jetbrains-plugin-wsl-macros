@@ -6,22 +6,20 @@ WSL-safe replacements for IntelliJ's built-in path macros. `Wsl`-prefixed macros
 (`\\wsl.localhost\…`) for files on a WSL mount, matching what the built-in macro
 previews show.
 
-> Compatible with IntelliJ Platform **2026.1+** (IntelliJ IDEA and all JetBrains IDEs).
+> Compatible with IntelliJ Platform **2025.3+** (IntelliJ IDEA and all JetBrains IDEs).
 
 ## Why
 
-When an IDE opens a project that lives on a WSL mount, built-in path macros behave
-inconsistently. `$FilePath$` *previews* as the Windows UNC path
-(`\\wsl.localhost\Ubuntu\home\user\project\Main.kt`), but *expands* at runtime to
-the Linux path (`/home/user/project/Main.kt`). External Tools receive the wrong
-value — a plain Windows tool gets a Linux path it cannot open.
+When an IDE opens a project that lives on a WSL mount, built-in path macros
+behave differently than their preview suggests. `$FilePath$` *previews* as the
+Windows UNC path (`\\wsl.localhost\Ubuntu\home\user\project\Main.kt`), but
+*expands* at runtime to the Linux path (`/home/user/project/Main.kt`). A plain
+Windows tool receiving that value gets a path it cannot open.
 
-This is a platform regression first reported in September 2025, predating the 2026.x
-line: [IJPL-207641](https://youtrack.jetbrains.com/issue/IJPL-207641) —
-"(External Tools) Macro values are not correct when using WSL" (IntelliJ Platform,
-subsystem "Core. WSL") — still open. The same symptom was filed separately for
-CLion ([CPP-49454](https://youtrack.jetbrains.com/issue/CPP-49454), resolved as a
-duplicate).
+The behaviour is tracked as [IJPL-207641](https://youtrack.jetbrains.com/issue/IJPL-207641)
+— "(External Tools) Macro values are not correct when using WSL" — and the same
+behaviour was reported separately for CLion
+([CPP-49454](https://youtrack.jetbrains.com/issue/CPP-49454)).
 
 Built-in macros are registered by name through the `com.intellij.macro` extension
 point, so a plugin cannot override them. This plugin registers **new** `Wsl`-prefixed
@@ -51,12 +49,12 @@ $WslFilePath$    → \\wsl.localhost\Ubuntu\home\user\project\Main.kt
 - From the IDE: **Settings → Plugins → Marketplace**, search for **WSL Macros**.
 - From [JetBrains Marketplace](https://plugins.jetbrains.com/) once the listing is live.
 
-Requires an IntelliJ Platform IDE **2026.1 or newer**.
+Requires an IntelliJ Platform IDE **2025.3 or newer**.
 
-> Note: the regression this plugin works around is older than 2026.1 — it also
-> affects, e.g., 2025.3 (see [CPP-49454](https://youtrack.jetbrains.com/issue/CPP-49454)).
-> Because the plugin targets 2026.1+, those affected versions cannot use this
-> workaround yet.
+> Note: the behaviour described above predates 2025.3 (see
+> [IJPL-207641](https://youtrack.jetbrains.com/issue/IJPL-207641), first reported
+> in September 2025), so it may also affect even earlier releases. Because the
+> plugin targets 2025.3+, those earlier versions cannot use this workaround yet.
 
 ## Usage
 

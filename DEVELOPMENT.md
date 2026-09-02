@@ -38,9 +38,8 @@ Predefined IntelliJ run/debug configurations are in `.run/`.
 
 ## Compatibility
 
-The plugin targets `sinceBuild = 261` (IntelliJ **2026.1+**); `untilBuild` is
-intentionally unset so it stays open-ended for 2026.*+ releases. It compiles
-against IDEA 2025.3.5 — all used platform APIs are stable well before 2026.1.
+- **Minimum supported:** `sinceBuild = 253` — IntelliJ **2025.3**.
+- **Maximum supported:** none — `untilBuild` is intentionally unset.
 
 ## Publishing
 

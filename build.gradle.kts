@@ -20,12 +20,13 @@ dependencies {
     }
 }
 
-// Declare 2026.1+ (build branch 261) compatibility; untilBuild is intentionally unset
-// so the plugin stays open-ended for the 2026.*+ releases.
+// Declare 2025.3+ (build branch 253) compatibility — the same release that compile target
+// (intellijIdea 2025.3.5) is pinned to. untilBuild is intentionally unset so the plugin stays
+// open-ended for current and future releases.
 intellijPlatform {
     pluginConfiguration {
         ideaVersion {
-            sinceBuild.set("261")
+            sinceBuild.set("253")
         }
     }
 }

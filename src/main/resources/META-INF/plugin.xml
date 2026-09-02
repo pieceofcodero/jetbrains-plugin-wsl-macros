@@ -15,9 +15,9 @@
     <description><![CDATA[
         Provides <em>Wsl</em>-prefixed macros (<code>$WslFilePath$</code>, <code>$WslFileDir$</code>,
         <code>$WslProjectFileDir$</code>, <code>$WslProjectpath$</code>, <code>$WslContentRoot$</code>)
-        that always expand to the Windows-visible path (<code>\\wsl.localhost\...</code>) even under WSL,
-        bypassing the platform's WSL path translation that corrupts built-in path macros
-        (<code>$FilePath$</code>, etc.) when a plain Windows tool consumes a file on a WSL mount.
+        that always expand to the Windows-visible path (<code>\\wsl.localhost\...</code>). Where a built-in
+        path macro such as <code>$FilePath$</code> can expand to the Linux-side path for a file on a WSL
+        mount, the matching <code>Wsl</code> macro yields a path a plain Windows tool can open.
         ]]></description>
 
     <!-- Product and plugin compatibility requirements.
