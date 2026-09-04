@@ -45,9 +45,8 @@ $WslFilePath$    → \\wsl.localhost\Ubuntu\home\user\project\Main.kt
 
 ## Install
 
-<!-- TODO: add the Marketplace listing URL once the plugin is published -->
 - From the IDE: **Settings → Plugins → Marketplace**, search for **WSL Macros**.
-- From [JetBrains Marketplace](https://plugins.jetbrains.com/) once the listing is live.
+- From [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/34036-wsl-macros).
 
 Requires an IntelliJ Platform IDE **2025.3 or newer**.
 
